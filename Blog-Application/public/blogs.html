@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Page</title>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+  <link rel="stylesheet" href="create-blog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="user-info">
+        <span class="username" id="username"></span>
+      </div>
+        <button class="logout-btn" onclick="hrefFunction()">Logout</button>
+    </div>
+  </header>
+
+  <div>
+    <center><h2 style="font-family: Times New Roman, Times, serif; color: rgb(130, 106, 251); margin-top: 50px;">Your Blogs</h2></center>
+      <div id="view-blogs" class="blogs"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="blog-view.js"></script>
+  </body>
+  </html>

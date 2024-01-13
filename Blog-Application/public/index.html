@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Login</header>
+      <form action="/api/v1/auth/login" method="post" class="form" id="loginForm" enctype="x-www-form-urlencoded">
+        <div class="input-box">
+          <label>Email</label>
+          <input type="email" name="email" class="email-Input" id="emailId" placeholder="Enter your email" required />
+        </div>
+
+        <div class="input-box">
+          <label>Password</label>
+          <input type="password" name="password" class="pswd-Input" placeholder="Enter your password" required />
+        </div>
+        <button type="submit" >Login</button>
+        <div class="forgot-password">
+           <a href="forgot-password.html">Forgot Password?</a>
+        </div>
+        <div class="register-link">
+            <p>Don't have an account? <a href="registration.html">Register here</a></p>
+        </div>
+        <div class="form-alert"></div>
+      </form>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Read URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const showLogin = urlParams.get('showLogin');
+    
+        if (showLogin === 'false') {
+            // Hide login form if 'showLogin' parameter is 'false'
+            document.getElementById('loginForm').style.display = 'none';
+        }
+    </script>
+    <script src="./browser-login.js"></script>
+  </body>
+</html>

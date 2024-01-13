@@ -1,0 +1,216 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+header {
+  background-color: rgb(130, 106, 251);
+  color: #fff;
+  padding: 10px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-top: 10px;
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.logout-btn:hover {
+  background-color: #d72436;
+}
+
+.submit {
+  padding: 10px 20px;
+  background-color: rgb(38, 195, 7);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 450px;
+  justify-items: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.blog-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+label,
+input,
+textarea {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  height: 30px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.blog-details label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.blog-details label input[type="radio"] {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.view-blogs {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.title {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  text-transform: uppercase;
+  color: rgb(130, 106, 251);
+}
+
+
+.create-blog {
+  display: flex;
+  max-width: 800px; /* Adjust max width as needed */
+  margin-left: 0;
+}
+
+.blog-details {
+  width: 25%; /* Adjust the width of the left side */
+}
+
+.blog-content {
+  width: 75%; /* Adjust the width of the right side */
+}
+
+.blog-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust as needed */
+}
+
+/* .blog-card {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+}
+
+.blog-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+.delete-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px; 
+  background: none;
+  border: none;
+  color: var(--red-dark);
+  font-size: 1.0rem; 
+  cursor: pointer;
+  padding: 0;
+}
+
+.detail {
+  margin-bottom: 8px;
+}
+
+.edit-link {
+  position: absolute;
+  bottom: 5px;
+  background: transparent;
+  font-size: 1.0rem;
+  border: transparent;
+  cursor: pointer;
+}
+
+.edit-link {
+  color: green;
+  right: 70px; 
+}
+
+
+.delete-btn:hover {
+  color: #ff0000;
+} */
+
+.blog-card {
+  flex: 1 0 calc(33.33% - 20px);
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(30% - 20px); /* Adjust width as needed */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.blog-detail {
+  flex-grow: 1; 
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Style for the delete button */
+.delete-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: var(--red-dark);
+  font-size: 1.0rem;
+  cursor: pointer;
+}
+
+.detail {
+  margin-bottom: 8px;
+}
+
+.edit-link {
+  position: absolute;
+  bottom: 5px;
+  right: 70px;
+  background: transparent;
+  font-size: 1.0rem;
+  border: transparent;
+  cursor: pointer;
+  color: green;
+}
+
+/* Adjust icon color on hover */
+.delete-btn:hover {
+  color: #ff0000;
+}

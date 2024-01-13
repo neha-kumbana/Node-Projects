@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const RegistrationSchema = new mongoose.Schema({
     username: {
         type: String,
-        required:[true,'must provide a user name'],        
+        required:[true,'must provide a username'],        
         trim:true,
         unique:true,
         minlength:3,
@@ -42,7 +42,17 @@ const RegistrationSchema = new mongoose.Schema({
     },
 })
 
-RegistrationSchema.pre('save', async function(next){
+RegistrationSchema.pre(['save','updateOne', 'update'], async function(next){
+    if (!this.isModified('password') || !this.password) {
+        return next();
+    }
+    try{
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
+    } catch (error) {
+        return next(error);
+    }
     const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password, salt)
     next()

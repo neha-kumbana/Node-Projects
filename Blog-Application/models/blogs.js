@@ -16,8 +16,10 @@ const BlogSchema = new mongoose.Schema({
     },
     visibility: {
         type: String,
-        enum:['private','public'],
-        default: 'private'
+        enum:['private','public']
+    },
+    image: {
+        type: String
     },
     category: {
         type: String,

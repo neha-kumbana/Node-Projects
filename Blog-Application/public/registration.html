@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="#" class="form" id="registrationForm" enctype="x-www-form-urlencoded">
+        <div class="input-box">
+          <label>Username</label>
+          <input type="text" name="username" class = "uname-input" placeholder="Enter username name" required />
+        </div>
+
+        <div class="input-box">
+          <label>Email</label>
+          <input type="email" name="email" class = "email-input" id="emailId" placeholder="Enter your email" required />
+        </div>
+
+        <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" name="fullName" class = "name-input" placeholder="Enter full name" required />
+        </div>
+
+        <div class="textarea">
+            <label>Bio/About Me</label>
+            <textarea rows="10" cols="95" class = "bio-input" name="bio" placeholder="Enter your bio" required ></textarea>
+        </div>
+        
+        <div class="input-box">
+            <label>Social Media Links</label>
+            <input type="text" class = "link-input" name="socialMediaLinks" placeholder="Enter your social media links"/>
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" name="password" class = "pswd-input" placeholder="Enter your password" required/>
+        </div>
+        <button type="submit">Submit</button>
+        <div class="form-alert"></div>
+      </form>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Read URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const showLogin = urlParams.get('showLogin');
+    
+        if (showLogin === 'true') {
+            // Hide registration form if 'showLogin' parameter is 'true'
+            document.getElementById('registrationForm').style.display = 'none';
+        }
+    </script>
+    <script src="./browser-app.js"></script>
+  </body>
+</html>

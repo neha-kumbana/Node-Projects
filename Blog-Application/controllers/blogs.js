@@ -1,5 +1,7 @@
 const Blog = require('../models/blogs')
 const {StatusCodes} = require('http-status-codes')
+// const multer = require('multer');
+// const { GridFsStorage } = require('multer-gridfs-storage');
 const {BadRequestError, NotFoundError} = require('../error')
 
 //all the blogs associated with the user
@@ -21,9 +23,18 @@ const getBlog = async (req, res) => {
 }
 
 const createBlog = async (req, res) => {
-    req.body.author = req.user.userId
-    const blog = await Blog.create(req.body)
-    res.status(StatusCodes.CREATED).json({ blog })
+    try{
+        const { title, content, category, visibility } = req.body;
+        req.body.author = req.user.userId
+        const blog = await Blog.create({...req.body})
+        // Sending the response with the created blog entry
+        res.status(StatusCodes.CREATED).json({ blog });
+    }catch(error){
+        console.error('An error occured', error);
+    }
+    // req.body.author = req.user.userId
+    // const blog = await Blog.create(req.body)
+    // res.status(StatusCodes.CREATED).json({ blog })
 }
 
 const updateBlog = async (req, res) => {

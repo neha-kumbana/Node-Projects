@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Page</title>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+  <link rel="stylesheet" href="create-blog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="user-info">
+        <span class="username" id="username"></span>
+      </div>
+        <button class="logout-btn" onclick="hrefFunction()">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="create-blog">
+      <div class="blog-form">
+        <div class="blog-details">
+        <form  class="form" enctype="x-www-form-urlencoded">
+          
+              <div class="form-alert"></div>
+            <label for="title">Title:</label>
+            <input type="text" name="title" class="title-Input" id="title" name="title" placeholder="Enter title" style="width:500px;">
+
+            <label for="category">Category:</label>
+            <input type="text" class="category-Input" id="category" name="category" placeholder="Enter category" style="width:500px;">
+
+            <label>Visibility:</label>
+            <label for="public">
+              <input type="radio" name="visibility" class="visibility-Input" id="public" name="visibility" value="public" checked> Public
+            </label>
+            <label for="private">
+              <input type="radio" name="visibility" class="visibility-Input" id="private" name="visibility" value="private" > Private
+            </label>
+          </div>
+          </div>
+        
+          <!-- <label for="image">Image:</label>
+              <input type="file" name="image" id="imageInput" class="form-control" accept="image/png,image/gif,image/jpg,image/jpeg"> -->
+          
+
+              <div class="blog-content">
+            <label for="content" style="margin-left: 20px;">Content:
+            <textarea id="content" name="content" class="content-Input" name="content" rows="10" placeholder="Write your blog content here" style="width:650px; height: 400px; margin-top: 4px; margin-left: 30px;"></textarea>
+          </label>
+          </div>
+
+          <center><button type="submit" class="submit" style="background-color: rgb(38, 195, 7);">Upload</button></center>
+        </form>
+      </div>
+
+
+    </div>
+    </section>
+    <!-- <section class="all-blogs">
+      <center><h2 style="font-family: Times New Roman, Times, serif; color: rgb(130, 106, 251); margin-top: 50px;">Your Blogs</h2></center>
+      <div id="view-blogs" class="blogs"></div>
+    </section> -->
+  </main>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  <script src="./browser-blog.js"></script>
+</body>
+</html>

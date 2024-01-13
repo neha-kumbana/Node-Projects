@@ -1,5 +1,12 @@
 require("dotenv").config()
 require("express-async-errors")
+const bodyParser = require('body-parser')
+
+const multer = require('multer')
+const upload = multer();
+//const uploads = multer({ dest: "uploads/" })
+const path = require('path');
+
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
 const connectDB = require('./db/connect')
@@ -10,16 +17,41 @@ const app = express()
 
 const authRouter = require('./routes/auth')
 const blogRouter = require('./routes/blogs')
-app.use(express.json())
+app.use(express.static('./public'));
+
+app.use(bodyParser.urlencoded({extended:true}));
+//app.use(express.urlencoded({extended:true}))
+
+//app.use(upload.array())
+// app.use(express.json());
 
 //routes
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/blogs',authenticateUser,blogRouter)
 
+const formData = {
+  title: 'Blog Title',
+  category: 'Blog Category',
+  visibility: 'public',
+  content: 'Blog Content'
+};
+
+app.post('/test', (req, res) => {
+const { title, category, visibility, content } = req.body;
+console.log(req.body);
+res.send('successful')
+})
+
+
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 3000
+
+
+// const uploads = multer({ storage });
+
+
 
 const start = async () => {
     try{
