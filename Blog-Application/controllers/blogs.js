@@ -22,6 +22,8 @@ const getBlog = async (req, res) => {
     res.status(StatusCodes.OK).json({ blog })
 }
 
+
+
 const createBlog = async (req, res) => {
     try{
         const { title, content, category, visibility } = req.body;

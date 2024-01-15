@@ -80,6 +80,10 @@ header {
     margin-left: auto;
   }
 
+  .logout-btn:hover {
+    background-color:#e61127 ;
+  }
+
 h1{
     text-align: center;
 }

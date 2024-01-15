@@ -16,6 +16,15 @@
       </div>
         <button class="logout-btn" onclick="hrefFunction()">Logout</button>
     </div>
+    <span id="menu-slider" class="username" onclick="openNav()"></span>
+
+  <!-- The menu -->
+  <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="#" class="view-profile">View Profile</a>
+      <a href="#">About</a>
+  </div>
   </header>
 
   <main>
@@ -69,6 +78,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script>
+      function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+      }
+
+      </script>
   <script src="./browser-blog.js"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@ formDOM.addEventListener('submit', async (e) => {
 
       localStorage.setItem('token', data.token)
       localStorage.setItem('username',data.user.username)
-      window.location.href = `blog-home-page.html`
+      window.location.href = `index.html`
     }catch(error){
         alert('Email or password are incorrect...');
     }

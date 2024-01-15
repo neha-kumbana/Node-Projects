@@ -1,5 +1,6 @@
 const viewBlogDOM = document.querySelector('#c1')
 const blogDOM = document.querySelector('.blogs')
+const viewProfileDOM = document.querySelector('.view-profile')
 
 function updateUsernameSpan() {
     const username = localStorage.getItem('username')
@@ -13,7 +14,9 @@ function updateUsernameSpan() {
 updateUsernameSpan();
 
 function hrefFunction(){
-    window.location.href = 'index.html'
+    window.location.href = 'login.html'
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
 }
 
 //create a blog
@@ -79,3 +82,22 @@ blogDOM.addEventListener('click',async (e) => {
         }
     }
 })
+
+viewProfileDOM.addEventListener('click', async(e) => {
+    const token = localStorage.getItem('token')
+    const username = localStorage.getItem('username')
+    try{
+        const response = await axios.get(`api/v1/auth/users/${username}`,{
+            headers:{
+                'Content-Type':'application/x-www-form-urlencoded',
+                Authorization:`Bearer ${token}`
+            }
+        })
+        const { data } = response
+        const userId = (data.user._id);
+        window.location.href = `view-profile.html?id=${userId}`
+  
+    }catch(error){
+        console.log('An error occured', error);
+    }
+  })

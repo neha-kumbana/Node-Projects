@@ -5,6 +5,49 @@ body {
   margin-right: 0;
 }
 
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#menu-slider {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  color: black;
+  cursor: pointer;
+}
+
 header {
   background-color: rgb(130, 106, 251);
   color: #fff;
@@ -21,6 +64,59 @@ header {
   margin-right: 10px;
   text-transform: capitalize;
 }
+
+/* Search bar styles */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 46px;
+  border: 1px solid #00B4CC;
+  background: rgb(130, 106, 251);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 8%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+
+
+
 
 .logout-btn {
   padding: 10px 20px;
@@ -94,6 +190,12 @@ textarea {
   color: rgb(130, 106, 251);
 }
 
+.category{
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: capitalize;
+  color: rgb(130, 106, 251);
+}
 
 .create-blog {
   display: flex;

@@ -5,6 +5,7 @@ const categoryDOM = document.querySelector('.category-Input')
 const visibilityDOM = document.querySelector('input[name="visibility"]:checked').value
 const contentDOM = document.querySelector('.content-Input')
 const formAlertDOM = document.querySelector('.form-alert')
+const viewProfileDOM = document.querySelector('.view-profile')
 // const form = document.getElementById('blogForm');
 // const imageInput = document.getElementById('imageInput');
  
@@ -21,7 +22,9 @@ function updateUsernameSpan() {
 updateUsernameSpan();
 
 function hrefFunction(){
-    window.location.href = 'index.html'
+    window.location.href = 'login.html'
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
 }
 
 //create a blog
@@ -51,7 +54,11 @@ formDOM.addEventListener('submit', async (e) => {
     
     const token = getJwtToken()
 
-    if(token){
+    if(!token){
+        alert('Login to publish the blog...')
+        window.location.href ='login.html'
+    }
+    else{
         try{
             const token = localStorage.getItem('token')
             const title = titleDOM.value;
@@ -88,8 +95,28 @@ formDOM.addEventListener('submit', async (e) => {
             formAlertDOM.textContent = 'An error occurred. Please try again.';
         }
     }
-    
+       
 })
+
+viewProfileDOM.addEventListener('click', async(e) => {
+    const token = localStorage.getItem('token')
+    const username = localStorage.getItem('username')
+    try{
+        const response = await axios.get(`api/v1/auth/users/${username}`,{
+            headers:{
+                'Content-Type':'application/x-www-form-urlencoded',
+                Authorization:`Bearer ${token}`
+            }
+        })
+        const { data } = response
+        const userId = (data.user._id);
+        window.location.href = `view-profile.html?id=${userId}`
+
+    }catch(error){
+        console.log('An error occured', error);
+    }
+})
+
 
 // window.addEventListener('load', async(e) => {
 //     const token = getJwtToken()

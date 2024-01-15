@@ -6,13 +6,9 @@ const {StatusCodes} = require('http-status-codes')
 
 const register = async (req, res) => {
     try{
-        const {username, email, fullName, bio, password} = req.body
-        // emailCheck = await User.findOne({email})
-        // if(emailCheck){
-        //     res.json({exists:true})
-        // }else{
-        //     res.json({exists:false})
-        // }
+        const {username, email, fullName, bio, socialMediaLinks, password} = req.body
+        // const defaultSocialMediaLinks = socialMediaLinks || "enter any social media links";
+        // req.body.socialMediaLinks = defaultSocialMediaLinks
         const user = await User.create({...req.body})
         // const user = await User.create({...req.body})
         const token = user.createJWT()
@@ -82,6 +78,21 @@ const updateProfile = async (req, res) => {
     }
 }
 
+const getUserId = async (req, res) => {
+    try{
+        const { username } = req.params
+        const user = await User.findOne({username:username})
+        
+        if(!user){
+            throw new NotFoundError('No user found')
+        }
+        res.status(StatusCodes.OK).json({ user })
+    }catch(error){
+        console.log('An error occured', error);
+    }
+}
+
+
 const login = async (req, res) => {
     const {email, password} = req.body
 
@@ -107,5 +118,6 @@ module.exports = {
     login,
     updatePassword,
     profile,
-    updateProfile
+    updateProfile,
+    getUserId
 }

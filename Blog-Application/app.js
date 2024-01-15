@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 
 const multer = require('multer')
 const upload = multer();
-//const uploads = multer({ dest: "uploads/" })
 const path = require('path');
 
 const notFoundMiddleware = require('./middleware/not-found')
@@ -17,6 +16,8 @@ const app = express()
 
 const authRouter = require('./routes/auth')
 const blogRouter = require('./routes/blogs')
+const publicBlogRouter = require('./routes/publicBlogs')
+
 app.use(express.static('./public'));
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 //routes
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/blogs',authenticateUser,blogRouter)
+app.use('/api/v1/blog/public',publicBlogRouter)
 
 const formData = {
   title: 'Blog Title',
@@ -47,10 +49,6 @@ app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 3000
-
-
-// const uploads = multer({ storage });
-
 
 
 const start = async () => {

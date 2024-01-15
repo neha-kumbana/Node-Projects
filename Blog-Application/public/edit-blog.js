@@ -22,7 +22,9 @@ function updateUsernameSpan() {
 updateUsernameSpan();
 
 function hrefFunction(){
-    window.location.href = 'index.html'
+    window.location.href = 'login.html'
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
 }
 
 function getJwtToken(){
