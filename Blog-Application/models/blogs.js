@@ -18,9 +18,6 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         enum:['private','public']
     },
-    image: {
-        type: String
-    },
     category: {
         type: String,
         required:[true, 'please provide the category']

@@ -25,45 +25,87 @@ function getJwtToken(){
     return localStorage.getItem('token')
 }
 
-window.addEventListener('load', async(e) => {
-    const token = getJwtToken()
-    console.log(token);
-    try{
+
+let isLiked = false;
+let likeCount = 0;
+window.addEventListener('load', async (e) => {
+    const token = getJwtToken();
+
+    try {
         const {
-            data : {blogs},
-        } = await axios.get('api/v1/blogs',{
-            headers:{
-                'Content-type':'application/x-www-form-urlencoded',
-                Authorization: `Bearer ${token}`
-            }
-        })
-        const allBlogs = blogs
-        .map((blog) => {
-            const {title, category, visibility, content, _id:blogId} = blog
-            return `<div class="blog-container">
+            data: { blogs },
+        } = await axios.get('api/v1/blogs', {
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        const allPromiseBlogs = blogs.map(async (blog) => {
+            const { title, content, _id: blogId } = blog;
+
+            try {
+                const likeResponse = await axios.get(`/api/v1/blog/public/comments/${blogId}`);
+                const likes = likeResponse.data.totalLikes;
+                const comments = likeResponse.data.comments;
+
+                const commentDetails = await Promise.all(comments.map(async (comment) => {
+                    if (comment.comment !== undefined) {
+                        const authorNameResponse = await axios.get(`/api/v1/blog/public/comment/${comment._id}`);
+                        const authorName = authorNameResponse.data;
+                        return {
+                            commentText: comment.comment,
+                            authorName: authorName,
+                        };
+                    }
+                    return null;
+                }));
+
+                return `<div class="blog-container">
                     <div class="blog-card">
-                    <div class="blog-detail">
-                        <center><h1><span class="title">${title}</span></h1></center>
-                        <span class="detail">${content}</span>
-                        </br>
-                        <a href="edit-blog.html?id=${blogId}" class="edit-link">
-                        <i class="fas fa-edit"></i>
-                        </a>
-                        <!-- delete btn -->
-                        <button class="delete-btn" data-id="${blogId}">
-                        <i class="fas fa-trash" aria-hidden="true"></i>
-                        </button>
+                        <div class="blog-detail">
+                            <center><h1><span class="title">${title}</span></h1></center>
+                            <span class="detail">${content}</span>
+                            </br>
+                            </br>
+                            <div class="interaction-session">
+                                <div class="like-session">
+                                    <button class="like-button" onclick="handleLike('${blogId}','${likes}')">
+                                        <i class="fas fa-thumbs-up"></i>
+                                        <span class="likeCount" id="likeCount-${blogId}">${likes}</span>
+                                    </button>
+                                </div>
+                                <div class="comment-session">
+                                    <div class="comments" id="comments-${blogId}">
+                                        ${commentDetails
+                                            .filter(commentDetail => commentDetail !== null)
+                                            .map(commentDetail => `<div>${commentDetail.commentText}<span class="post"> Posted by- ${commentDetail.authorName}</span></div>`).join('')}
+                                    </div>
+                                </div>
+                                <a href="edit-blog.html?id=${blogId}" class="edit-link">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <!-- delete btn -->
+                                <button class="delete-btn" data-id="${blogId}">
+                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>`
-        })
-        .join('');
-        const blogDOM = document.getElementById('view-blogs'); 
-                blogDOM.innerHTML = `<div class="blog-container">${allBlogs}</div>`;
-    }catch(error){
-        console.log('Something went wrong', error);
+                </div>`;
+            } catch (error) {
+                console.log('An error occurred', error);
+            }
+        });
+
+        const allBlog = await Promise.all(allPromiseBlogs);
+        const publicBlogDOM = document.getElementById('view-blogs');
+        publicBlogDOM.innerHTML = `<div class="blog-container">${allBlog.join('')}</div>`;
+    } catch (error) {
+        console.log('An error occurred', error);
     }
-})
+});
+
 
 blogDOM.addEventListener('click',async (e) => {
     const el = e.target
@@ -101,3 +143,41 @@ viewProfileDOM.addEventListener('click', async(e) => {
         console.log('An error occured', error);
     }
   })
+
+
+  async function handleLike(blogId, likes) {
+    console.log(likes);
+    let likeCount = parseInt(likes) || 0; // Parse likes as an integer
+    const likeCountElement = document.querySelector(`#likeCount-${blogId}`);
+
+    if (likeCount > 0) {
+        likeCount--;
+
+    } else {
+        likeCount++;
+    }
+
+    // Toggle the like state
+    isLiked = likeCount > 0;
+
+    likeCountElement.textContent = likeCount;
+
+    try {
+        const token = localStorage.getItem('token')
+        const formData = new URLSearchParams;
+        formData.append('like', likeCount)
+        formData.append('blogId', blogId)
+        const response = await axios.post('/api/v1/blogs/comments', formData.toString(), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Authorization: `Bearer ${token}`
+            }
+        })
+        const { data } = response
+        console.log(data);
+        location.reload();
+
+    } catch (error) {
+        console.log('An error occurred', error);
+    }
+}

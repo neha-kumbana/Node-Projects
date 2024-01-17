@@ -110,12 +110,76 @@ body{
 .wrap{
   width: 30%;
   position: absolute;
-  top: 8%;
+  top: 6%;
   left: 75%;
   transform: translate(-50%, -50%);
 }
 
 
+/* .like-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 5px;
+} */
+
+.fa-thumbs-up {
+  margin-right: 8px;
+}
+
+/* #likeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+} */
+
+#likeIcon {
+  color: white; 
+}
+
+#likeCount {
+  margin-left: 10px;
+}
+
+.interaction-session{
+  display: flex;
+  gap: 20px;
+}
+
+.like-section,
+.comment-section {
+  display: flex;
+  align-items: left;
+  flex: 1;
+}
+
+.comment-container {
+  display: inline-block;
+}
+
+.like-button,
+.comment-button {
+  background-color: rgb(130, 106, 251);
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.comment-box {
+  display: none;
+  margin-top: 10px;
+}
+
+.comment-box textarea {
+  width: 300px; 
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
 
 
 .logout-btn {
@@ -197,6 +261,12 @@ textarea {
   color: rgb(130, 106, 251);
 }
 
+.created{
+  font-size: small;
+  font-family: 'Times New Roman', Times, serif;
+  color: #818181;
+}
+
 .create-blog {
   display: flex;
   max-width: 800px; /* Adjust max width as needed */
@@ -215,6 +285,11 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* Adjust as needed */
+}
+
+.post{
+  font-size: small;
+  color: #818181;
 }
 
 /* .blog-card {
