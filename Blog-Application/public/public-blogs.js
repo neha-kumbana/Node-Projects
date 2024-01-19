@@ -1,5 +1,6 @@
 const publicBlogsDOM = document.querySelector('.blogs')
 const searchBlogsDOM = document.querySelector('.searchTerm')
+const viewProfileDOM = document.querySelector('.view-profile')
 const searchBlogBtnDOM = document.querySelector('.searchButton')
 const likeCountDOM = document.querySelector('.likeCount')
 
@@ -241,3 +242,22 @@ function toggleCommentBox(blogId) {
     }
   }
   
+
+  viewProfileDOM.addEventListener('click', async(e) => {
+    const token = localStorage.getItem('token')
+    const username = localStorage.getItem('username')
+    try{
+        const response = await axios.get(`api/v1/auth/users/${username}`,{
+            headers:{
+                'Content-Type':'application/x-www-form-urlencoded',
+                Authorization:`Bearer ${token}`
+            }
+        })
+        const { data } = response
+        const userId = (data.user._id);
+        window.location.href = `view-profile.html?id=${userId}`
+
+    }catch(error){
+        console.log('An error occured', error);
+    }
+})

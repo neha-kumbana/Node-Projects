@@ -7,15 +7,11 @@ const {StatusCodes} = require('http-status-codes')
 const register = async (req, res) => {
     try{
         const {username, email, fullName, bio, socialMediaLinks, password} = req.body
-        // const defaultSocialMediaLinks = socialMediaLinks || "enter any social media links";
-        // req.body.socialMediaLinks = defaultSocialMediaLinks
         const user = await User.create({...req.body})
-        // const user = await User.create({...req.body})
         const token = user.createJWT()
         res.status(StatusCodes.CREATED).json({user:{name:user.username},token})
     }catch(error){
         if (error.code === 11000 && error.keyPattern && error.keyValue) {
-            // Duplicate key error (email already exists)
             return res.status(400).json({ error: 'Email already exists' });
         }
 

@@ -3,6 +3,7 @@ const blogTitleDOM = document.querySelector('.title-Input')
 const blogCategoryDOM = document.querySelector('.category-Input')
 const blogVisibilityDOM = document.querySelectorAll('.visibility-Input')
 const blogContentDOM = document.querySelector('.content-Input')
+const viewProfileDOM = document.querySelector('.view-profile')
 const formDOM = document.querySelector('.form')
 const editBtnDOM = document.querySelector('.edit-btn')
 const formAlertDOM = document.querySelector('.form-alert')
@@ -91,4 +92,24 @@ formDOM.addEventListener('submit', async(e) => {
 
     }
            
+})
+
+
+viewProfileDOM.addEventListener('click', async(e) => {
+    const token = localStorage.getItem('token')
+    const username = localStorage.getItem('username')
+    try{
+        const response = await axios.get(`api/v1/auth/users/${username}`,{
+            headers:{
+                'Content-Type':'application/x-www-form-urlencoded',
+                Authorization:`Bearer ${token}`
+            }
+        })
+        const { data } = response
+        const userId = (data.user._id);
+        window.location.href = `view-profile.html?id=${userId}`
+
+    }catch(error){
+        console.log('An error occured', error);
+    }
 })

@@ -1,4 +1,4 @@
-/* Import Google font - Poppins */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
   margin: 0;
@@ -12,7 +12,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  /* background: rgb(130, 106, 251); */
   background-image: url("./images/login-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -146,12 +145,12 @@ a {
   color: rgb(98, 0, 189);
 
 }
-/*Responsive*/
-@media screen and (max-width: 500px) {
+
+/* @media screen and (max-width: 500px) {
   .form .column {
     flex-wrap: wrap;
   }
   .form :where(.gender-option, .gender) {
     row-gap: 15px;
   }
-}
+} */

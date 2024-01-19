@@ -2,8 +2,6 @@ const Blog = require('../models/blogs')
 const Comment = require('../models/comments')
 const User = require('../models/registration')
 const {StatusCodes} = require('http-status-codes')
-// const multer = require('multer');
-// const { GridFsStorage } = require('multer-gridfs-storage');
 const {BadRequestError, NotFoundError} = require('../error')
 
 const getPublicBlogs = async(req, res) => {
@@ -19,7 +17,7 @@ const getPublicBlogs = async(req, res) => {
 const getCategory = async(req, res) => {
     try{
         const {category} = req.params
-        const publicBlogs = await Blog.find({ category:category })
+        const publicBlogs = await Blog.find({ category: {'$regex': category, $options:'i'} })
         res.status(StatusCodes.OK).json({ publicBlogs })
     }catch(error){
         console.log('An error occured', error);
@@ -34,7 +32,6 @@ const getAuthorName = async(req, res) => {
             return res.status(StatusCodes.NOT_FOUND).json({ error: 'Blog or author not found' });
         }
         const username = blog.author.username
-        // const authorName = author.map(blog => blog.author.userId)
         res.status(StatusCodes.OK).json(username)
 
     }catch(error){

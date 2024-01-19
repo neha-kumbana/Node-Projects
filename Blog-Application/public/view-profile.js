@@ -78,7 +78,7 @@ formDOM.addEventListener('submit', async(e) => {
       }
     })
     alert('Your profile has been updated...')
-    window.location.href=`blog-home-page.html`
+    window.location.href=`index.html`
     }catch(error){
       console.log('An error occured', error);
     }
