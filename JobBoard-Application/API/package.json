@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.1",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^5.11.15",
+    "multer": "^1.4.5-lts.1"
+  }
+}
