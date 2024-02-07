@@ -1,0 +1,47 @@
+<body>
+    <section class="container">
+      <div class="card">
+        <header>Registration</header>
+        <form class="form-group">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username" [formControl]="usernameFormControl" placeholder="Enter your username" required />
+                <div *ngIf="usernameFormControl.hasError('required') && usernameFormControl.touched" class="text-danger">
+                  USername required
+                </div>
+                <div *ngIf="usernameFormControl.hasError('username') && usernameFormControl.touched" class="text-danger">
+                  Enter valid email
+                </div>
+            </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="email" [formControl]="emailFormControl" placeholder="Enter your email" required />
+            <div *ngIf="emailFormControl.hasError('required') && emailFormControl.touched" class="text-danger">
+              Email required
+            </div>
+            <div *ngIf="emailFormControl.hasError('email') && emailFormControl.touched" class="text-danger">
+              Enter valid email
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter your password" required />
+          </div>
+
+          <div class="form-group">
+            <label>
+                <input type="radio" name="role" class="role-Input" id="employer" value="Employer" [(ngModel)]="role"> Employer
+            </label>
+            <label>
+                <input type="radio" name="role" class="role-Input" id="job seeker" value="Job Seeker" [(ngModel)]="role"> Job Seeker
+            </label>
+  
+          </div>
+  
+          <button type="button" class="btn-register" (click)="register()">Register</button>
+        </form>
+      </div>
+    </section>
+  </body>
+  

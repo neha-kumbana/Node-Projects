@@ -4,6 +4,10 @@ const {StatusCodes} = require('http-status-codes')
 
 const createJob = async (req, res) => {
     try{
+        if (req.user.role !== 'Employer') {
+            return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Only employers can create jobs.' });
+        }
+        
         req.body.employer = req.user.userId
         const job = await Job.create({...req.body})
         res.status(StatusCodes.CREATED).json({job})
@@ -12,12 +16,36 @@ const createJob = async (req, res) => {
     } 
 }
 
-const getAllJobs = async (req, res) => {
+const getAllJobsEmployee = async (req, res) => {
     try{
-        const job = await Job.find({employer:req.user.userId}).sort('created')
-        res.status(StatusCodes.OK).json({job})
+        const jobs = await Job.find({employer:req.user.userId}).sort('created')
+        res.status(StatusCodes.OK).json({jobs})
     }catch(error){
         console.log('An error occured', error);
+    }
+}
+
+const getAllJobs = async (req, res) => {
+    try{
+        const jobs = await Job.find()
+        res.status(StatusCodes.OK).json({jobs})
+    }catch(error){
+        console.log('An error occured', error);
+    }
+}
+
+const getJobDetails = async (req, res, next) => {
+    try{
+        const {params:{id:jobId}} = req
+        const job = await Job.findOne({
+            _id: jobId
+        })
+        if(!job) {
+            throw new NotFoundError('No job found')
+        }
+        res.status(StatusCodes.OK).json({job})
+    }catch(error){
+        next(error)
     }
 }
 
@@ -75,7 +103,9 @@ const deleteJob = async (req, res, next) => {
 
 module.exports = {
     createJob,
+    getAllJobsEmployee,
     getAllJobs,
+    getJobDetails,
     getJob,
     updateJob,
     deleteJob

@@ -1,0 +1,10 @@
+<section class="section">
+    <div *ngIf="jobId">
+        <h2>{{ job?.title }}</h2>
+        <p>Skill: {{ job?.skills }}</p>
+        <p>Role and Responsibilities: {{ job?.rolesAndResponsibilities }}</p>
+        <p>Location: {{ job?.location }}</p>
+        <button type="button" class="apply" name="apply">Apply</button>
+    </div>
+</section>
+

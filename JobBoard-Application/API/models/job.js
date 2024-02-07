@@ -21,6 +21,10 @@ const JobSchema = new mongoose.Schema({
     location: {
         type: String,
         require: [true, 'Please provide location']
+    },
+    visibility:{
+        type: String,
+        default: 'public'
     }
 },{timestamps: true})
 

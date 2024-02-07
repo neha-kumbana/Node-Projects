@@ -1,0 +1,9 @@
+<div class="job-container">
+    <div *ngFor="let job of jobs" (click)="navigateToJobDetails(job._id)" class="job-box">
+      <h2>{{ job.title }}</h2>
+      <p>Skill: {{ job.skills }}</p>
+      <p>Role and Responsibilities: {{ job.rolesAndResponsibilities }}</p>
+      <p>Location: {{ job.location }}</p>
+    </div>
+</div>
+  

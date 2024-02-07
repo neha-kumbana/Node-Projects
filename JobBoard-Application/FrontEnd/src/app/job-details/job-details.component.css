@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  max-width: 900px;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.job-details {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 400px; /* Adjust width as needed */
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Add margin-bottom for spacing */
+}
+
+.input-group label {
+  width: 150px; /* Adjust width as needed */
+  margin-right: 10px;
+}
+
+.input-group input,
+.input-group textarea {
+  flex: 1; /* Take up remaining space */
+  height: 50px; /* Adjust height as needed */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}

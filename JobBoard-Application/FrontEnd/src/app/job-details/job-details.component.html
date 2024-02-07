@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card">
+        <div *ngIf="jobId">
+            <div class="input-group">
+                <label>Title</label>
+                <input type="text" [(ngModel)]="job.title">
+            </div>
+            <div class="input-group">
+                <label>Skill</label>
+                <input type="text" [(ngModel)]="job.skills">
+            </div>
+            <div class="input-group">
+                <label>Role and Responsibilities</label>
+                <textarea  [(ngModel)]="job.rolesAndResponsibilities"></textarea>
+            </div>
+            <div class="input-group">
+                <label>Location</label>
+                <input type="text" [(ngModel)]="job.location">
+            </div>    
+        </div>
+    </div>
+</div>
+
