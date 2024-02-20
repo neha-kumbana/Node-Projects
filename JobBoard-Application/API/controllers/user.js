@@ -1,5 +1,5 @@
 const User = require('../models/user')
-const { NotFoundError, BadRequestError, UnauthenticatedError } = require('../error')
+const { NotFoundError } = require('../error')
 const { StatusCodes } = require('http-status-codes')
 
 const getUser = async (req, res, next) => {
@@ -20,16 +20,21 @@ const getUser = async (req, res, next) => {
 const updatedUser = async (req, res, next) => {
     try{
         const {params:{id:userId}} = req
+        const profile = req.file
+        const profilePath = profile.path
         const user = await User.findOneAndUpdate({
             _id:userId
-        },req.body,{
+        }, {
+            ...req.body, 
+            profile: profilePath 
+        },{
             new:true,
             runValidators:true
         })
         if(!user){
             throw new NotFoundError('No user found')
         }
-        res.status(StatusCodes.OK).json({ user })
+        res.status(StatusCodes.OK).json({user})
         }catch(error){
             next(error)
         }

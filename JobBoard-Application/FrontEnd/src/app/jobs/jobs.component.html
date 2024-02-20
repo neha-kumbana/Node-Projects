@@ -1,11 +1,21 @@
 <div class="job-container">
-    <div *ngFor="let job of jobs" class="job-box">
-      <h2>{{ job.title }}</h2>
-      <p>Skill: {{ job.skills }}</p>
-      <p>Role and Responsibilities: {{ job.rolesAndResponsibilities }}</p>
-      <p>Location: {{ job.location }}</p>
-      <button type="button" class="update" (click)="navigateToJobDetails(job._id)">Update</button>
-      <button type="button" class="delete">Delete</button>
-    </div>
+  <div *ngFor="let job of jobs" class="job-box">
+    <svg class="close-icon" (click)="delete(job._id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+    </svg>
+    <h2>{{ job.title }}</h2>
+    <p>Skill: {{ job.skills }}</p>
+    <p>Role and Responsibilities: </p>
+    <div *ngIf="!job.showAllRoles" class="short-description">{{ job.rolesAndResponsibilities.slice(0,200) }}</div>
+    <div *ngIf="job.showAllRoles || job.rolesAndResponsibilities.length <= 100" class="short-description">{{ job.rolesAndResponsibilities }}</div>
+    <button (click)="toggleRoles(job)" class="read">Read {{ job.showAllRoles ? 'Less' : 'More' }}...</button>
+    <p>Location: {{ job.location }}</p>
+    <p>Company: {{ job.company }}</p>
+    <button type="button" class="update" (click)="navigateToJobDetails(job._id)">Update</button>
+    <button type="button" class="view" (click)="viewApplication(job._id)">View applicants</button>
+  </div>
 </div>
+
   
+

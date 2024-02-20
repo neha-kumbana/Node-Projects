@@ -65,6 +65,36 @@ const getJob = async (req, res, next) => {
     }
 }
 
+const getSearchJob = async (req, res, next) => {
+    const { skills, location, company, title, category } = req.query
+    try{
+        let query = {}
+        if(skills){
+            query.skills = { $in: skills.split(',') };
+        }
+        if(title){
+            query.title = { $regex: new RegExp(title, 'i') }
+        }
+        if(company){
+            query.company = { $regex: new RegExp(company, 'i') }
+        }
+        if(location){
+            query.location = { $regex: new RegExp(location, 'i') }
+        }
+        if(category){
+            query.category = { $regex: new RegExp(category, 'i')}
+        }
+        const jobs = await Job.find(query)
+        if(!jobs){
+            throw new NotFoundError('No jobs found for the specified search')
+        }
+        res.status(StatusCodes.OK).json({jobs})
+    }catch(error){
+        console.log('An error occured', error);
+        next(error)
+    }
+}
+
 const updateJob = async (req, res, next) => {
     try{
         const {user:{userId}, params:{id:jobId}} = req
@@ -106,6 +136,7 @@ module.exports = {
     getAllJobsEmployee,
     getAllJobs,
     getJobDetails,
+    getSearchJob,
     getJob,
     updateJob,
     deleteJob

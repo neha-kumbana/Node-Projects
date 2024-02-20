@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="card">
+        <div *ngIf="userId">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" [(ngModel)]="updateUser.username" >
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" [(ngModel)]="updateUser.email" readonly >
+            </div>
+            <div class="input-group">
+                <label for="role">Role</label>
+                <input type="text" id="role" name="role" [(ngModel)]="updateUser.role" readonly>
+            </div> 
+            <div *ngIf="role === 'Job Seeker'">
+                <div class="input-group">
+                    <label for="profile">Profile pic</label>
+                    <input type="file" id="profile" (change)="handleFileInput($event)">
+                </div>
+                <div class="input-group">
+                    <label for="education">Education</label>
+                    <input type="text" id="education" name="education" [(ngModel)]="updateUser.education" >
+                </div>
+                <div class="input-group">
+                    <label for="experience">Experience</label>
+                    <input type="text" id="experience" name="experience" [(ngModel)]="updateUser.experience" >
+                </div> 
+                <div class="input-group">
+                    <label for="skills">Skills</label>
+                    <input type="text" id="skills" name="skills" [(ngModel)]="updateUser.skills" >
+                </div>
+                <div class="input-group">
+                    <label for="contactDetails">Contact Details</label>
+                    <input type="text" id="contactDetails" name="contactDetails" [(ngModel)]="updateUser.contactDetails" >
+                </div>
+            </div>
+            
+            <div *ngIf="role === 'Employer'">
+                <div class="input-group">
+                    <label for="companyName">Company</label>
+                    <input type="text" id="companyName" name="companyName" [(ngModel)]="updateUser.companyName" >
+                </div>
+                <div class="input-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" [(ngModel)]="updateUser.location" >
+                </div>
+                <div class="input-group">
+                    <label for="industry">Industry</label>
+                    <input type="text" id="industry" name="industry" [(ngModel)]="updateUser.industry" >
+                </div>
+                <div class="input-group">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website" [(ngModel)]="updateUser.website" >
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <button type="button" class="update" (click)="update(user._id)">Update</button>  
+            </div>
+        </div>
+    </div>
+</div>
+

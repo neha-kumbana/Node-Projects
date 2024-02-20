@@ -2,6 +2,7 @@ const { UnauthenticatedError, BadRequestError, NotFoundError } = require('../err
 const User = require('../models/user')
 const {StatusCodes} = require('http-status-codes')
 
+
 const register = async(req, res) => {
     try{
         const user = await User.create({...req.body})
@@ -53,7 +54,7 @@ const login = async(req, res, next) => {
             throw new UnauthenticatedError('Invalid credentials')
         }
         const token = user.createJWT()
-        res.status(StatusCodes.OK).json({user:{username:user.username, role:user.role},token})
+        res.status(StatusCodes.OK).json({user:{username:user.username, role:user.role, id:user._id},token})
     }catch(error){
         next(error)
     }

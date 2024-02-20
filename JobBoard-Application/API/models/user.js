@@ -39,6 +39,9 @@ const UserSchema = new mongoose.Schema({
         resume: {
           type: String, 
         },
+        profile:{
+          type: String,
+        },
         contactDetails: {
           type: String
         },

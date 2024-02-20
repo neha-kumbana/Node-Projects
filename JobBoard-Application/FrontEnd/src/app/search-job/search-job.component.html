@@ -1,0 +1,40 @@
+<section class="section">
+    <div class="job-details-container">
+        <div *ngFor="let job of jobs" class="job-details">
+            <h2><label for="title">{{ job.title }}</label></h2>
+            <p>Skill: <label for="skills">{{ job.skills }}</label></p>
+            <p>Role and Responsibilities: <label for="rolesAndResponsibilities">{{ job.rolesAndResponsibilities }}</label></p>
+            <p>Location: <label for="location">{{ job.location }}</label></p>
+            <p>Company: <label for="company">{{ job.company }}</label></p>
+            <p>Category: <label for="category">{{job.category}}</label></p>
+            <button type="button" class="apply" name="apply" (click)="apply(job)">Apply</button>
+            <button type="button" class="save" name="apply" (click)="saveJob(job)">Save</button>
+        </div>
+    </div>
+    <div class="application-form-container">
+        <div class="application-form" *ngIf="showApplication">
+            <div class="input-group">
+                <label for="education">Education</label>
+                <input class="texts" type="text" id="education" name="education" [(ngModel)]="education">
+            </div>
+            <div class="input-group">
+                <label for="experience">Experience</label>
+                <input type="text" id="experience" name="experience" [(ngModel)]="experience">
+            </div> 
+            <div class="input-group">
+                <label for="skills">Skills</label>
+                <input type="text" id="skills" name="skills" [(ngModel)]="skills">
+            </div>
+            <div class="input-group">
+                <label for="resume">Resume</label>
+                <input type="file" id="resume" name="resume" (change)="handleFileInput($event)">
+            </div>
+            <div class="input-group">
+                <label for="contactDetails">Contact Details</label>
+                <input type="text" id="contactDetails" name="contactDetails" [(ngModel)]="contactDetails">
+            </div>
+            <button type="button" class="apply" name="apply" (click)="applyJob()">Apply</button>
+        </div>
+    </div>
+</section>
+

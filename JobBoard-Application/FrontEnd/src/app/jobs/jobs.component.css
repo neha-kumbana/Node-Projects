@@ -12,6 +12,7 @@
     border-radius: 5px;
     background-color: #f9f9f9;
     box-sizing: border-box;
+    position:relative;
   }
   
   /* Adjust margin for the last box in each row */
@@ -44,6 +45,21 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
 
+  .view{
+    background-color: rgb(4, 142, 255);
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 60px;
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+  }
   .delete {
     background-color: rgb(245, 13, 13);
     border: none;
@@ -64,3 +80,26 @@
   .delete:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
+
+  .close-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px; 
+    cursor: pointer;
+    fill: black 
+}
+
+.close-icon:hover{
+  background-color: #ccc;
+}
+
+.read{
+  background-color: #f9f9f9;;
+  border: none;
+}
+
+.read:hover{
+  cursor: pointer;
+}

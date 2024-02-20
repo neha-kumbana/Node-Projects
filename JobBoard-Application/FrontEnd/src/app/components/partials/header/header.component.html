@@ -3,13 +3,45 @@
         <a (click)="home()" class="logo">Job Search</a>
         <nav>
             <ul>
+                <li *ngIf="role === 'Employer'">
+                    <a routerLink="/createJob">Create Job</a>
+                </li>
+                <li *ngIf="role === 'Job Seeker'">
+                    <div class="search">
+                        <input type="text" placeholder="{{placeholderText}}" name="title" [(ngModel)]="title" (click)="showSkillsLocationCompany()">
+                        <button (click)="search()">
+                            <i class="fa fa-search" style="font-size: 18px;"></i>
+                        </button>
+                    </div>
+                    <div *ngIf="showLocationBar" class="search">
+                        <input type="text" placeholder="Search location" name="location" [(ngModel)]="location">
+                        <button (click)="search()">
+                            <i class="fa fa-search" style="font-size: 18px;"></i>
+                        </button>
+                    </div>
+                    <div *ngIf="showSkillsBar" class="search">
+                        <input type="text" placeholder="Search Skills" name="skills" [(ngModel)]="skills">
+                        <button (click)="search()">
+                            <i class="fa fa-search" style="font-size: 18px;"></i>
+                        </button>
+                    </div>
+                    <div *ngIf="showCompanyBar" class="search">
+                        <input type="text" placeholder="Search company" name="company" [(ngModel)]="company">
+                        <button (click)="search()">
+                            <i class="fa fa-search" style="font-size: 18px;"></i>
+                        </button>
+                    </div>
+                </li>
                 <li>
                     <a routerLink="/login">Login</a>
                 </li>
                 <li class="menu-container">
-                    <a routerLink="/dashboard">{{ username ? username : 'Guest' }}</a>
+                    <a>{{ username ? username : 'Guest' }}</a>
+                    <div class="profile">
+                        <img *ngIf="profileUrl" [src]="profileUrl" alt="Profile pic">
+                    </div>
                     <div class="menu">
-                        <a routerLink="/profile">Profile</a>
+                        <a (click)="getUser()">Profile</a>
                         <a (click)="logout()">Logout</a>
                     </div>
                 </li>

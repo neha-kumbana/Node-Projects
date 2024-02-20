@@ -1,10 +1,35 @@
 <section class="section">
-    <div *ngIf="jobId">
-        <h2>{{ job?.title }}</h2>
-        <p>Skill: {{ job?.skills }}</p>
-        <p>Role and Responsibilities: {{ job?.rolesAndResponsibilities }}</p>
-        <p>Location: {{ job?.location }}</p>
-        <button type="button" class="apply" name="apply">Apply</button>
+    <div *ngIf="job">
+        <h2><label for="title">{{job.title}}</label></h2>
+        <p>Skill: <label for="skills">{{job.skills}}</label></p>
+        <p>Role and Responsibilities: <label for="rolesAndResponsibilities">{{job.rolesAndResponsibilities}}</label></p>
+        <p>Location: <label for="location">{{job.location}}</label></p>
+        <p>Company: <label for="company">{{job.company}}</label></p>
+        <button type="button" class="apply" name="apply" (click)="showApplicationForm()">Apply</button>
+        <button type="button" class="save" name="save" (click)="saveJob()">Save</button>
+    </div>
+    <div class="application-form" *ngIf="showApplication">
+        <div class="input-group">
+            <label for="education">Education</label>
+            <input class="texts" type="text" id="education" name="education" [(ngModel)]="education" >
+        </div>
+        <div class="input-group">
+            <label for="experience">Experience</label>
+            <input type="text" id="experience" name="experience" [(ngModel)]="experience">
+        </div> 
+        <div class="input-group">
+            <label for="skills">Skills</label>
+            <input type="text" id="skills" name="skills" [(ngModel)]="skills">
+        </div>
+        <div class="input-group">
+            <label for="resume">Resume</label>
+            <input type="file" id="resume" (change)="handleFileInput($event)">
+        </div>
+        <div class="input-group">
+            <label for="contactDetails">Contact Details</label>
+            <input type="text" id="contactDetails" name="contactDetails" [(ngModel)]="contactDetails">
+        </div>
+        <button type="button" class="apply" name="apply" (click)="applyJob(resume)" [disabled]="resume === null">Apply</button>
     </div>
 </section>
 

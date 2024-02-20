@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="sidebar">
+      <div class="sidebar-item">
+        <a class="sidebar-link" (click)="getMyJobs()">My Jobs</a>
+        <hr class="sidebar-divider">
+        <a class="sidebar-link" (click)="showCategory()">Category</a>
+        
+        <div *ngIf="showCheckBoxContainer" class="checkbox-container">
+          <div class="checkbox-item">
+            <input type="checkbox" id="technologyCheckbox" value="technology" name="technology" [(ngModel)]="technology" (change)="search()">
+            <label for="technologyCheckbox">Technology</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="financeCheckBox" value="finance" name="finance" [(ngModel)]="finance" (change)="search()">
+            <label for="financeCheckBox">Finance</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="marketingCheckBox" value="marketing" name="marketing" [(ngModel)]="marketing" (change)="search()">
+            <label for="marketingCheckBox">Marketing</label>
+          </div>
+        </div>
+        <hr class="sidebar-divider">
+        <a class="sidebar-link">Recent Jobs</a>
+      </div>
+    </div>
+    <div class="content">
+      <div class="job-container">
+        <div *ngFor="let job of displayedJobs" (click)="navigateToJobDetails(job._id)" class="job-box">
+          <h2>{{ job.title }}</h2>
+          <p>Company: {{ job.company }}</p>
+          <p>Location: {{ job.location }}</p>
+        </div>
+        <button *ngIf="showMoreAvailable()" (click)="showMore()">Show More</button>
+      </div>
+    </div>
+  </div>
+  

@@ -38,3 +38,36 @@
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+
+.input-group button {
+  margin: 0 auto; /* Auto margin to center the button */
+}
+
+.update {
+  background-color: rgb(4, 142, 255);
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.update:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.radio-label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 80px;
+  margin-right: 5px;
+}

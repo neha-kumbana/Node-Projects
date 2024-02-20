@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="sidebar">
+      <div class="sidebar-item">
+        <a class="sidebar-link my-items">My items</a>
+        <hr class="sidebar-divider">
+        <a class="sidebar-link" (click)="getMyJobs()">My Jobs</a>
+        <hr class="sidebar-divider">
+        <a class="sidebar-link" (click)="getSavedJobs()">Saved</a>
+    </div>
+    </div>
+        <div class="content">
+            <div class="job-container">
+                <h2>My Jobs</h2>
+                <button class="save" type="button">Saved</button>
+                <div *ngFor="let save of saves" class="job-box">
+                    <svg class="close-icon" (click)="deleteJob(save._id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                    </svg>
+                    <h2>{{ save.title }}</h2>
+                    <p>Skill: {{ save.skills }}</p>
+                    <p>Role and Responsibilities: {{ save.rolesAndResponsibilities }}</p>
+                    <p>Location: {{ save.location }}</p>
+                    <p>Company: {{save.company}}</p>
+                </div>
+            </div>
+        </div>
+</div>
+
+  

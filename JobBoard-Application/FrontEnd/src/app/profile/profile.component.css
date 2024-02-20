@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card {
+    max-width: 900px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+  }
+  
+  .job-details {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 400px; /* Adjust width as needed */
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Add margin-bottom for spacing */
+  }
+  
+  .input-group label {
+    width: 150px; /* Adjust width as needed */
+    margin-right: 10px;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+    flex: 1; /* Take up remaining space */
+    height: 50px; /* Adjust height as needed */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .input-group button {
+    margin: 0 auto; /* Auto margin to center the button */
+  }
+  
+  .update {
+    background-color: rgb(4, 142, 255);
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+  }
+  
+  .update:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="sidebar">
+      <div class="sidebar-item">
+        <a class="sidebar-link my-items">My items</a>
+        <hr class="sidebar-divider">
+        <a class="sidebar-link" (click)="getMyJobs()">My Jobs</a>
+        <hr class="sidebar-divider">
+        <a class="sidebar-link" (click)="getSavedJobs()">Saved</a>
+    </div>
+    </div>
+        <div class="content">
+            <div class="job-container">
+                <h2>My Jobs</h2>
+                <button type="button">Applied</button>
+                <div *ngFor="let job of jobs" class="job-box">
+                    <h2>{{ job.title }}</h2>
+                    <p>Skill: {{ job.skills }}</p>
+                    <p>Role and Responsibilities: {{ job.rolesAndResponsibilities }}</p>
+                    <p>Location: {{ job.location }}</p>
+                    <p>Company: {{job.company}}</p>
+                    <p>Category: {{job.category}}</p>
+                </div>
+            </div>
+        </div>
+
+  

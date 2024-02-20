@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .sidebar-link {
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .sidebar-link:hover {
+    background-color: #e0e0e0;
+  }
+
+  .sidebar-link.my-items {
+    cursor: default; 
+  }
+  
+  .sidebar-link.my-items:hover {
+    background-color: transparent; 
+  }
+
+.content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .job-container {
+    display: flex;
+    flex-direction: column; 
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+  }
+  
+  .job-box {
+    width: 100%; 
+    margin-bottom: 20px;
+    padding: 30px;
+    position: relative;
+  }
+  
+  .job-box:not(:last-child) {
+    border-bottom: 1px solid #ccc; 
+  }
+
+  .close-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px; 
+      cursor: pointer;
+      fill: black 
+  }
+
+  .close-icon:hover{
+    background-color: #ccc;
+  }
+
+  .save{
+    border-radius: 20px;
+    background-color: green;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: none;
+  }
+
+  .sidebar-divider {
+    border-top: 1px solid #ccc;
+    margin: 1px 0;
+  }
+  

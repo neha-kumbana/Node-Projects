@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit{
   email: string = ''
   password: string = ''
   role: string = 'Job Seeker'
+  bgimage: string = 'assets/images/login-bg.jpg'
 
   private apiUrl = 'http://localhost:3000/api/v1/auth';
 

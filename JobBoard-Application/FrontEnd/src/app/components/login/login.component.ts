@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
+  bgimage: string = "assets/images/login-bg.jpg"
   
   private apiUrl = 'http://localhost:3000/api/v1/auth';
 
@@ -44,9 +45,11 @@ export class LoginComponent implements OnInit {
           const token = resultData.token
           const username = resultData.user.username
           const role = resultData.user.role
+          const userId = resultData.user.id
           localStorage.setItem('token',token)
           localStorage.setItem('username', username)
           localStorage.setItem('role', role)
+          localStorage.setItem('userId', userId)
           if(role == 'Employer'){
             this.router.navigate(['/jobs']).then(() => {
               window.location.reload();

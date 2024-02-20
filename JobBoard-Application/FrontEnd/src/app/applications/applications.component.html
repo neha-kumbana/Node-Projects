@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="job-container">
+        <ng-container *ngIf="apps && apps.length > 0; else noApplications">
+            <div *ngFor="let app of apps" class="job-box">
+                <p>Name: {{app.user.username.toUpperCase()}}</p>
+                <p>Email: {{app.user.email}}</p>
+                <p>Education: {{ app.education }}</p>
+                <p>Experience: {{ app.experience }}</p>
+                <p>Skills: {{app.skills}}</p>
+                <p>Contact Details: {{ app.contactDetails }}</p>
+                <p>Applied on: {{ app.createdAt }}</p>
+                <button (click)="downloadResume(app.resume)">View Resume</button>
+            </div>
+        </ng-container>
+        <ng-template #noApplications>
+            <div class="job-box">
+                <p>No applications available.</p>
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+  
+    
+  
+  

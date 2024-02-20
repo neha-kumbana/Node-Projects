@@ -22,9 +22,17 @@ const JobSchema = new mongoose.Schema({
         type: String,
         require: [true, 'Please provide location']
     },
+    company: {
+        type: String,
+        required: [true, 'Please provide company']
+    },
     visibility:{
         type: String,
         default: 'public'
+    },
+    category:{
+        type: String,
+        enum: ['technology', 'finance', 'marketing']
     }
 },{timestamps: true})
 
